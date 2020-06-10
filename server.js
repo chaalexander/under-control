@@ -8,6 +8,9 @@ const mongoose = require("mongoose");
 const compression = require("compression");
 const app = express();
 
+// port
+const PORT = process.env.PORT || 8000;
+
 // parser middleware
 app.use(logger("dev"));
 app.use(compression());
@@ -19,9 +22,6 @@ app.use(express.static("public"));
 
 // routes
 app.use(require("./routes/api.js"));
-
-// port
-const PORT = process.env.PORT || 8000;
 
 // connection
 mongoose.connect(
