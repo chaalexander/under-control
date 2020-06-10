@@ -1,4 +1,4 @@
-// requiring dotenv 
+// requiring dotenv
 require("dotenv").config();
 
 // importing node packages
@@ -21,14 +21,16 @@ app.use(express.static("public"));
 app.use(require("./routes/api.js"));
 
 // port
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
 // connection
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/under-control", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-});
-
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/under-control",
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false,
+  }
+);
 
 // listener
 app.listen(PORT, () => {
